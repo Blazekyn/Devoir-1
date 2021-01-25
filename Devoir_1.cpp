@@ -25,9 +25,8 @@ int main()
 				"|o 3 représente les travailleurs à commission   |\n"
 				"|o 4 représente les travailleurs à la pièce.    |\n"
 				"=================================================\n"
-				"Insérer le code (-1 pour quitter): " << flush;
+				"Insérer le code (-1 pour quitter): ";
 		cin >> choixUsager;
-		system("CLS");
 		switch (choixUsager)
 		{
 		case -1:
@@ -43,6 +42,7 @@ int main()
 			les 40 premières heures et un taux horaire «temps et demi», soit 1.5 fois le taux horaire
 			régulier, pour les heures supplémentaires. (Exercice 2.1)*/
 			cout << "Entrez le nombre d'heure travaillé par l’employé(e) (00) : ";
+			cin >> reponseUsager;
 			cout << "Entrez le taux horaire de l’employé(e) ($00.00) : ";
 			cin >> pourcentageSalaire;
 
@@ -83,7 +83,9 @@ int main()
 		reponseUsager = 1;
 		cout << "Pour combien de employés calculer-vous le salaire (1 pour individuel): ";
 		cin >> reponseUsager;
-		cout << "Le salaire de " << reponseUsager << " employé(s) est de " << (salaire * reponseUsager) << "$";
+		cout << "Le salaire de " << reponseUsager << " employé(s) est de " << (salaire * reponseUsager) << "$" << flush << endl;
+		cin.get();
+		system("CLS");
 	} while (true);
 }
 /*	==========================================================================================
