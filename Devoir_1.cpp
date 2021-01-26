@@ -4,46 +4,51 @@ using namespace std;
 
 int main()
 {
-	//Déclaration et initialisation des variables aux valeurs par défaut.
+	//Dï¿½claration et initialisation des variables aux valeurs par dï¿½faut.
 	int choixUsager = 0;
 	int reponseUsager = 0;
 	float pourcentageSalaire = 0.0;
 	float salaire = 00.00;
 
 	/*
-	 Chaque type d'employé possède son propre code de paie :
-	-code de paie 1 représente les cadres;
-	-code de paie 2 représente les travailleurs à tarif horaire;
-	-code de paie 3 représente les travailleurs à commission; et
-	-code de paie 4 représente les travailleurs à la pièce.
+	 Chaque type d'employï¿½ possï¿½de son propre code de paie :
+	-code de paie 1 reprï¿½sente les cadres;
+	-code de paie 2 reprï¿½sente les travailleurs ï¿½ tarif horaire;
+	-code de paie 3 reprï¿½sente les travailleurs ï¿½ commission; et
+	-code de paie 4 reprï¿½sente les travailleurs ï¿½ la piï¿½ce.
 	*/
 	do
 	{
-		cout << "==================L=É=G=E=N=D=E==================\n"
-				"|o 1 représente les cadres                      |\n"
-				"|o 2 représente les travailleurs à tarif horaire|\n"
-				"|o 3 représente les travailleurs à commission   |\n"
-				"|o 4 représente les travailleurs à la pièce.    |\n"
+		system("CLS");
+		cout << "==================L=Ã‰=G=E=N=D=E==================\n"
+				"|o 1 reprÃ©sente les cadres                      |\n"
+				"|o 2 reprÃ©sente les travailleurs Ã  tarif horaire|\n"
+				"|o 3 reprÃ©sente les travailleurs Ã  commission   |\n"
+				"|o 4 reprÃ©sente les travailleurs Ã  la piÃ¨ce.    |\n"
 				"=================================================\n"
-				"Insérer le code (-1 pour quitter): ";
+				"Insï¿½rer le code (-1 pour quitter): ";
 		cin >> choixUsager;
+		if (cin.fail())
+		{
+			cin.clear();
+			cin.ignore(256, '\n');
+		}
+
 		switch (choixUsager)
 		{
-		case -1:
-			return 0;
 		case 1:
-			//Salaire hebdomadaire fixe, sans égard aux heures travaillées;
-			cout << "Insérer le salaire hebdomadaire fixe : ";
+			//Salaire hebdomadaire fixe, sans Ã©gard aux heures travaillï¿½es;
+			cout << "Insï¿½rer le salaire hebdomadaire fixe : ";
 			cin >> salaire;
 			break;
 
 		case 2:
-			/* Travailleurs à tarif horaire : recevant un taux horaire fixe « régulier » pour
-			les 40 premières heures et un taux horaire «temps et demi», soit 1.5 fois le taux horaire
-			régulier, pour les heures supplémentaires. (Exercice 2.1)*/
-			cout << "Entrez le nombre d'heure travaillé par l’employé(e) (00) : ";
+			/* Travailleurs ï¿½ tarif horaire : recevant un taux horaire fixe  rï¿½gulier ï¿½ pour
+			les 40 premiï¿½res heures et un taux horaire temps et demi, soit 1.5 fois le taux horaire
+			rï¿½gulier, pour les heures supplï¿½mentaires. (Exercice 2.1)*/
+			cout << "Entrez le nombre d'heure travaillï¿½ par lï¿½employï¿½(e) (00) : ";
 			cin >> reponseUsager;
-			cout << "Entrez le taux horaire de l’employé(e) ($00.00) : ";
+			cout << "Entrez le taux horaire de lï¿½employï¿½(e) ($00.00) : ";
 			cin >> pourcentageSalaire;
 
 			if (reponseUsager <= 40)
@@ -57,63 +62,71 @@ int main()
 			break;
 
 		case 3:
-			//travailleurs à commission : recevant 250$ plus 5.7 % de leurs ventes hebdomadaires brutes
+			//travailleurs ï¿½ commission : recevant 250$ plus 5.7 % de leurs ventes hebdomadaires brutes
 			cout << "Entrez le nombre de ventes hebdomadaire(s) : ";
 			cin >> reponseUsager;
 			salaire = 250 + (0.057 * reponseUsager);
 			break;
 
 		case 4:
-			/* travailleur à la pièce : recevant un taux fixe d'argent pour chaque article produit;
-			chaque travailleur à la pièce de cette compagnie ne travaille que sur un seul type
+			/* travailleur ï¿½ la piï¿½ce : recevant un taux fixe d'argent pour chaque article produit;
+			chaque travailleur ï¿½ la piï¿½ce de cette compagnie ne travaille que sur un seul type
 			d'article. */
 			cout << "Entrez le nombre de ventes d'article de produit(s) : ";
 			cin >> reponseUsager;
-			cout << "Entrez le pourcentage par produit en décimal (ex. 66.6) : ";
+			cout << "Entrez le pourcentage par produit en dï¿½cimal (ex. 66.6) : ";
 			cin >> pourcentageSalaire;
 			break;
 
 		default:
-			cout << "Entrer un entier entre 1 et 4, alternativement entrer -1 afin de quitter le logiciel.\n" << endl;
-			_getch;
-			continue;
+			if (choixUsager != -1 || cin.fail())
+			{
+				cout << "Entrer un entier entre 1 et 4, alternativement entrer -1 afin de quitter le logiciel.\n Appuyer espace pour continuer..." << endl;
+				_getch();
+				continue;
+			}
+			else
+			{
+				return 0;
+			}
 		}
-		/*Reinitilisation de la varibale reponseUsager afin de conformer la variable au contexte nécessaire,
-		1 étant un employé*/
+		/*Reinitilisation de la varibale reponseUsager afin de conformer la variable au contexte nï¿½cessaire,
+		1 ï¿½tant un employï¿½*/
 		reponseUsager = 1;
-		cout << "Pour combien de employés calculer-vous le salaire (1 pour individuel): ";
+		cout << "Pour combien de employï¿½s calculer-vous le salaire (1 pour individuel): ";
 		cin >> reponseUsager;
-		cout << "Le salaire de " << reponseUsager << " employé(s) est de " << (salaire * reponseUsager) << "$" << flush << endl;
-		cin.get();
-		system("CLS");
-	} while (true);
+		cout << "Le salaire de " << reponseUsager << " employï¿½(s) est de " << (salaire * reponseUsager) << "$" << endl;
+		_getch();
+	} while (choixUsager != -1);
+
+	return 0;
 }
 /*	==========================================================================================
 	||									INSTRUCTIONS										||
 	==========================================================================================
-	À effectuer 
-	Une compagnie rémunère ses employés selon leur fonction :
+	ï¿½ effectuer 
+	Une compagnie rï¿½munï¿½re ses employï¿½s selon leur fonction :
 
-	* cadres : recevant un salaire hebdomadaire fixe, sans égard aux heures travaillées;
+	* cadres : recevant un salaire hebdomadaire fixe, sans ï¿½gard aux heures travaillï¿½es;
 
-	* travailleurs à tarif horaire : 
-	recevant un taux horaire fixe « régulier » pour les 40 premières heures 
-	et un taux horaire «temps et demi», soit 1.5 fois le taux horaire régulier, 
-	pour les heures supplémentaires; 
+	* travailleurs ï¿½ tarif horaire : 
+	recevant un taux horaire fixe ï¿½ rï¿½gulier ï¿½ pour les 40 premiï¿½res heures 
+	et un taux horaire ï¿½temps et demiï¿½, soit 1.5 fois le taux horaire rï¿½gulier, 
+	pour les heures supplï¿½mentaires; 
 
-	* travailleurs à commission : 
+	* travailleurs ï¿½ commission : 
 	recevant 250$ plus 5.7 % de leurs ventes hebdomadaires brutes;
 
-	* travailleur à la pièce : 
+	* travailleur ï¿½ la piï¿½ce : 
 	recevant un taux fixe d'argent pour chaque article produit; 
-	chaque travailleur à la pièce de cette compagnie ne travaille que 
+	chaque travailleur ï¿½ la piï¿½ce de cette compagnie ne travaille que 
 	sur un seul type d'article.
 
 	==========================================================================================
-	Écrivez un programme qui calcule la paie pour  chaque  employé. Vous ne connaissez pas
-	à l'avance le nombre d'employés. 
+	ï¿½crivez un programme qui calcule la paie pour  chaque  employï¿½. Vous ne connaissez pas
+	ï¿½ l'avance le nombre d'employï¿½s. 
 
-	Utilisez une structure switch pour calculer la paie de chaque employé en fonction du code
-	de paie de cet employé. À l'intérieur de cette  structure switch, invitez l'utilisateur
-	(par exemple, le responsable de la paie) à entrer les faits appropriés requis par votre
-	programme pour calculer la paie de chaque employé en fonction du code de paie de l'employé. */
+	Utilisez une structure switch pour calculer la paie de chaque employï¿½ en fonction du code
+	de paie de cet employï¿½. ï¿½ l'intï¿½rieur de cette  structure switch, invitez l'utilisateur
+	(par exemple, le responsable de la paie) ï¿½ entrer les faits appropriï¿½s requis par votre
+	programme pour calculer la paie de chaque employï¿½ en fonction du code de paie de l'employï¿½. */
